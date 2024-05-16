@@ -1,48 +1,63 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCamper } from '../../api/api';
 import CamperList from '../../components/CamperList/CamperList';
+import { Link, useLocation } from 'react-router-dom';
+import { selectCampers, selectIsLoading, selectError } from 'store/selectors';
 
 const Catalog = () => {
   const dispatch = useDispatch();
-  const campers = useSelector(state => state.camper.campers);
-  const isLoading = useSelector(state => state.camper.isLoading);
-  const error = useSelector(state => state.camper.error);
+  const campers = useSelector(selectCampers);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
+
   const [filters, setFilters] = useState({
     location: '',
-    equipment: [],
-    type: '',
+    details: [],
+    form: '',
+    transmission: '',
   });
-  const [page, setPage] = useState(1);
   const limit = 4;
 
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const page = parseInt(queryParams.get('page')) || 1;
+
   useEffect(() => {
-    dispatch(fetchCamper({ page, limit }));
-  }, [dispatch, page]);
+    dispatch(fetchCamper({ page, limit, filters }));
+  }, [dispatch, page, filters.form, filters.location]);
 
   const handleFilterChange = e => {
     const { name, value, type, checked } = e.target;
-    if (type === 'checkbox') {
-      setFilters(prevFilters => ({
-        ...prevFilters,
-        equipment: checked
-          ? [...prevFilters.equipment, value]
-          : prevFilters.equipment.filter(eq => eq !== value),
-      }));
-    } else {
-      setFilters(prevFilters => ({
-        ...prevFilters,
-        [name]: value,
-      }));
+    setFilters(prev => {
+      const newFilters = { ...prev };
+
+      if (type === 'checkbox') {
+        if (name === 'transmission') {
+          newFilters.transmission = checked ? value : '';
+        } else {
+          newFilters.details = checked
+            ? [...prev.details, value]
+            : prev.details.filter(detail => detail !== value);
+        }
+      } else if (type === 'radio') {
+        newFilters.form = value;
+      } else {
+        newFilters[name] = value;
+      }
+
+      return newFilters;
+    });
+  };
+
+  const handleSearch = () => {
+    dispatch(fetchCamper({ page, limit, filters }));
+  };
+
+  const handleKeyDown = e => {
+    if (e.key === 'Enter') {
+      handleSearch();
     }
-  };
-
-  const nextPage = () => {
-    setPage(prevPage => prevPage + 1);
-  };
-
-  const prevPage = () => {
-    setPage(prevPage => Math.max(prevPage - 1, 1));
   };
 
   if (isLoading) return <div>Loading...</div>;
@@ -58,14 +73,15 @@ const Catalog = () => {
           placeholder="Location"
           value={filters.location}
           onChange={handleFilterChange}
+          onKeyDown={handleKeyDown}
         />
         <div>
           <label>
             <input
               type="checkbox"
-              name="equipment"
-              value="Kitchen"
-              checked={filters.equipment.includes('Kitchen')}
+              name="details"
+              value="kitchen"
+              checked={filters.details.includes('kitchen')}
               onChange={handleFilterChange}
             />
             Kitchen
@@ -73,43 +89,87 @@ const Catalog = () => {
           <label>
             <input
               type="checkbox"
-              name="equipment"
-              value="Shower"
-              checked={filters.equipment.includes('Shower')}
+              name="details"
+              value="airConditioner"
+              checked={filters.details.includes('airConditioner')}
+              onChange={handleFilterChange}
+            />
+            AC
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="transmission"
+              value="automatic"
+              checked={filters.transmission === 'automatic'}
+              onChange={handleFilterChange}
+            />
+            Automatic Transmission
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="details"
+              value="shower"
+              checked={filters.details.includes('shower')}
               onChange={handleFilterChange}
             />
             Shower
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="details"
+              value="TV"
+              checked={filters.details.includes('TV')}
+              onChange={handleFilterChange}
+            />
+            TV
           </label>
         </div>
         <div>
           <label>
             <input
               type="radio"
-              name="type"
-              value="Motorhome"
-              checked={filters.type === 'Motorhome'}
+              name="form"
+              value="alcove"
+              checked={filters.form === 'alcove'}
               onChange={handleFilterChange}
             />
-            Motorhome
+            Alcove
           </label>
           <label>
             <input
               type="radio"
-              name="type"
-              value="Campervan"
-              checked={filters.type === 'Campervan'}
+              name="form"
+              value="van"
+              checked={filters.form === 'van'}
               onChange={handleFilterChange}
             />
-            Campervan
+            Van
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="form"
+              value="panelTruck"
+              checked={filters.form === 'panelTruck'}
+              onChange={handleFilterChange}
+            />
+            Panel Truck
           </label>
         </div>
+        <button onClick={handleSearch}>Search</button>
       </div>
       <CamperList campers={campers} />
       <div>
-        <button onClick={prevPage} disabled={page === 1}>
+        <Link
+          to={`?page=${Math.max(page - 1, 1)}`}
+          className={page === 1 ? 'disabled' : ''}
+        >
           Previous
-        </button>
-        <button onClick={nextPage}>Next</button>
+        </Link>
+        <Link to={`?page=${page + 1}`}>Next</Link>
       </div>
     </div>
   );

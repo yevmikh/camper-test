@@ -1,12 +1,14 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
+import { selectError, selectIsLoading } from 'store/selectors';
 
 const CamperList = ({ campers }) => {
-  const isLoading = useSelector(state => state.camper.isLoading);
-  const error = useSelector(state => state.camper.error);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
+  if (!campers.length)
+    return <p>No campers found with the selected filters.</p>;
 
   return (
     <div>
@@ -24,6 +26,7 @@ const CamperList = ({ campers }) => {
           <p>Transmission: {camper.transmission}</p>
           <p>Petrol: {camper.engine}</p>
           <p>Kitchen: {camper.details.kitchen}</p>
+          <p>Shower: {camper.details.shower}</p>
           <p>Bed: {camper.details.beds}</p>
           <p>AC: {camper.details.airConditioner}</p>
         </div>

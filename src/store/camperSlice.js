@@ -3,6 +3,12 @@ import { fetchCamper } from '../api/api';
 
 const initialState = {
   campers: [],
+  filters: {
+    location: '',
+    details: [],
+    form: '',
+    transmission: '',
+  },
   isLoading: false,
   error: null,
 };
