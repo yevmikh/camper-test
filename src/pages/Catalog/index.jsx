@@ -2,14 +2,16 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCamper } from '../../api/api';
 import CamperList from '../../components/CamperList/CamperList';
-import { Link, useLocation } from 'react-router-dom';
+import Button from 'components/Button/Button';
 import { selectCampers, selectIsLoading, selectError } from 'store/selectors';
+import { resetPage, incrementPage } from '../../store/camperSlice';
 
 const Catalog = () => {
   const dispatch = useDispatch();
   const campers = useSelector(selectCampers);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
+  const page = useSelector(state => state.camper.page);
 
   const [filters, setFilters] = useState({
     location: '',
@@ -17,15 +19,19 @@ const Catalog = () => {
     form: '',
     transmission: '',
   });
+  const [hasMore, setHasMore] = useState(true);
   const limit = 4;
 
-  const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-  const page = parseInt(queryParams.get('page')) || 1;
-
   useEffect(() => {
-    dispatch(fetchCamper({ page, limit, filters }));
-  }, [dispatch, page, filters.form, filters.location]);
+    const fetchData = async () => {
+      const result = await dispatch(fetchCamper({ page, limit, filters }));
+      if (result.payload.length < limit) {
+        setHasMore(false);
+      }
+    };
+
+    fetchData();
+  }, [dispatch, page]);
 
   const handleFilterChange = e => {
     const { name, value, type, checked } = e.target;
@@ -51,13 +57,19 @@ const Catalog = () => {
   };
 
   const handleSearch = () => {
-    dispatch(fetchCamper({ page, limit, filters }));
+    dispatch(resetPage());
+    setHasMore(true);
+    dispatch(fetchCamper({ page: 1, limit, filters }));
   };
 
   const handleKeyDown = e => {
     if (e.key === 'Enter') {
       handleSearch();
     }
+  };
+
+  const handleLoadMore = async () => {
+    dispatch(incrementPage());
   };
 
   if (isLoading) return <div>Loading...</div>;
@@ -163,13 +175,7 @@ const Catalog = () => {
       </div>
       <CamperList campers={campers} />
       <div>
-        <Link
-          to={`?page=${Math.max(page - 1, 1)}`}
-          className={page === 1 ? 'disabled' : ''}
-        >
-          Previous
-        </Link>
-        <Link to={`?page=${page + 1}`}>Next</Link>
+        {hasMore && <Button onClick={handleLoadMore}>Load More</Button>}
       </div>
     </div>
   );

@@ -11,12 +11,20 @@ const initialState = {
   },
   isLoading: false,
   error: null,
+  page: 1,
 };
 
 const camperSlice = createSlice({
   name: 'camper',
   initialState,
-  reducers: {},
+  reducers: {
+    resetPage(state) {
+      state.page = 1;
+    },
+    incrementPage(state) {
+      state.page += 1;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchCamper.pending, state => {
@@ -24,7 +32,11 @@ const camperSlice = createSlice({
       })
       .addCase(fetchCamper.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.campers = action.payload;
+        if (state.page === 1) {
+          state.campers = action.payload;
+        } else {
+          state.campers = [...state.campers, ...action.payload];
+        }
       })
       .addCase(fetchCamper.rejected, (state, action) => {
         state.isLoading = false;
@@ -33,4 +45,5 @@ const camperSlice = createSlice({
   },
 });
 
+export const { resetPage, incrementPage } = camperSlice.actions;
 export default camperSlice.reducer;
