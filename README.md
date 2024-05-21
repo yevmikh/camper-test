@@ -11,7 +11,7 @@ Advanced Search and Filters: Effortlessly find the ideal camper by adjusting
 search parameters to meet your needs. Favorites: Save campers you like and
 access detailed information about them anytime. Persistent Storage: Your saved
 favorites are stored locally, so you can pick up where you left off.
-Technologies Used
+Technologies Used:
 
 React: The core framework for building the user interface. React Router:
 Facilitates smooth navigation between different pages. Redux Toolkit: Manages
