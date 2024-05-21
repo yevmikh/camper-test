@@ -13,9 +13,9 @@
   display: flex;
   box-sizing: border-box;
   gap: 40px;
-  margin-left: 10px;
+  /* margin-left: 10px; */
   max-width: 1440px;
-  padding: 20px;
+  padding: 20px 10px;
 }
 
 .headerNavList {
