@@ -27,12 +27,12 @@
 .homeTitle {
   font-size: 48px;
   font-weight: 700;
-  margin-bottom: 62px;
+  margin-bottom: 40px;
 }
 
 .homeAnotation {
-  font-size: 1.5rem;
-  max-width: 600px;
+  font-size: 20px;
+  max-width: 520px;
   color: white;
   position: relative;
   z-index: 1;
