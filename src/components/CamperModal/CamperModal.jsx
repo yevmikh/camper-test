@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeModal } from '../../store/camperSlice';
@@ -38,12 +38,6 @@ const CamperModal = ({ camper }) => {
     }
   };
 
-  const handleKeyDown = e => {
-    if (e.key === 'Escape') {
-      handleClose();
-    }
-  };
-
   const validateForm = () => {
     const errors = {};
     if (!form.bookingDate) {
@@ -67,13 +61,6 @@ const CamperModal = ({ camper }) => {
       handleClose();
     }
   };
-
-  useEffect(() => {
-    document.addEventListener('keydown', handleKeyDown);
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, []);
 
   return createPortal(
     <div className={moduleCss.backdrop} onClick={handleBackdropClick}>
