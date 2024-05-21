@@ -41,7 +41,7 @@ const ModalFeatures = ({ details }) => {
         </li>
         {kitchen && (
           <li className={commonModuleCss.formItem}>
-            <svg className={moduleCss.icon}>
+            <svg className={moduleCss.iconkitchen}>
               <use href={`${sprite}#kitchen`} />
             </svg>
             kitchen

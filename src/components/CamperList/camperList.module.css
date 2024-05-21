@@ -64,6 +64,12 @@
   height: 20px;
   fill: #101828;
 }
+
+.iconkitchen {
+  width: 20px;
+  height: 20px;
+  fill: transparent;
+}
 .camperFormButton {
   padding: 16px 40px;
   margin-top: 24px;

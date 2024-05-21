@@ -170,6 +170,11 @@
   fill: #101828;
   transition: color 0.3s ease, scale 0.3s ease;
 }
+.iconkitchen {
+  width: 32px;
+  height: 32px;
+  fill: transparent;
+}
 
 .icon:hover,
 .icon:focus {
