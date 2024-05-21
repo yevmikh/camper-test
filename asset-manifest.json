@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/camper-test/static/css/main.21f18768.css",
+    "main.css": "/camper-test/static/css/main.4eefdb49.css",
     "main.js": "/camper-test/static/js/main.f75209ec.js",
     "static/css/849.a2cada67.chunk.css": "/camper-test/static/css/849.a2cada67.chunk.css",
     "static/js/849.2b36ca27.chunk.js": "/camper-test/static/js/849.2b36ca27.chunk.js",
@@ -19,7 +19,7 @@
     "static/media/sprite.svg": "/camper-test/static/media/sprite.664cce7637d03f31a3a051159f39457f.svg",
     "static/media/stop.png": "/camper-test/static/media/stop.6f9f3d8790788a8c9056.png",
     "index.html": "/camper-test/index.html",
-    "main.21f18768.css.map": "/camper-test/static/css/main.21f18768.css.map",
+    "main.4eefdb49.css.map": "/camper-test/static/css/main.4eefdb49.css.map",
     "main.f75209ec.js.map": "/camper-test/static/js/main.f75209ec.js.map",
     "849.a2cada67.chunk.css.map": "/camper-test/static/css/849.a2cada67.chunk.css.map",
     "849.2b36ca27.chunk.js.map": "/camper-test/static/js/849.2b36ca27.chunk.js.map",
@@ -34,7 +34,7 @@
     "166.136f1ac0.chunk.js.map": "/camper-test/static/js/166.136f1ac0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.21f18768.css",
+    "static/css/main.4eefdb49.css",
     "static/js/main.f75209ec.js"
   ]
 }
