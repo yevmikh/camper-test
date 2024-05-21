@@ -20,10 +20,7 @@ Persist: Ensures your favorite campers are saved in local storage, preserving
 them between sessions. Getting Started
 
 To get started with the project, follow these steps to clone the repository and
-install dependencies:
-
-This command will start the app in development mode. Open http://localhost:3000
-in your browser to view and interact with the application.
+install dependencies
 
 Contributing
 
