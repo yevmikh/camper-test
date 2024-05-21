@@ -1,10 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { fetchCamper } from '../../api/api';
 import CamperList from '../../components/CamperList/CamperList';
-import Button from 'components/Button/Button';
+import { Button } from '../../components/Button/Button';
 import { selectCampers, selectIsLoading, selectError } from 'store/selectors';
 import { resetPage, incrementPage } from '../../store/camperSlice';
+import Filters from './Filters';
+import Loader from 'components/Loader/Loader';
+import commonModuleCss from '../../common.module.css';
+import moduleCss from './catalog.module.css';
 
 const Catalog = () => {
   const dispatch = useDispatch();
@@ -12,6 +17,7 @@ const Catalog = () => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const page = useSelector(state => state.camper.page);
+  const navigate = useNavigate();
 
   const [filters, setFilters] = useState({
     location: '',
@@ -19,22 +25,30 @@ const Catalog = () => {
     form: '',
     transmission: '',
   });
+  const [activeFilters, setActiveFilters] = useState(filters);
   const [hasMore, setHasMore] = useState(true);
   const limit = 4;
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await dispatch(fetchCamper({ page, limit, filters }));
+      const result = await dispatch(
+        fetchCamper({ page, limit, filters: activeFilters })
+      );
       if (result.payload.length < limit) {
         setHasMore(false);
       }
     };
 
     fetchData();
-  }, [dispatch, page]);
+  }, [dispatch, page, limit, activeFilters]);
 
-  const handleFilterChange = e => {
-    const { name, value, type, checked } = e.target;
+  useEffect(() => {
+    if (error) {
+      navigate('/error');
+    }
+  }, [error, navigate]);
+
+  const handleFilterChange = ({ target: { name, value, type, checked } }) => {
     setFilters(prev => {
       const newFilters = { ...prev };
 
@@ -59,6 +73,7 @@ const Catalog = () => {
   const handleSearch = () => {
     dispatch(resetPage());
     setHasMore(true);
+    setActiveFilters(filters);
     dispatch(fetchCamper({ page: 1, limit, filters }));
   };
 
@@ -70,112 +85,43 @@ const Catalog = () => {
 
   const handleLoadMore = async () => {
     dispatch(incrementPage());
+    dispatch(fetchCamper({ page: page + 1, limit, filters: activeFilters }));
   };
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
-
+  if (isLoading) return <Loader />;
   return (
-    <div>
-      <h1>Catalog</h1>
-      <div>
-        <input
-          type="text"
-          name="location"
-          placeholder="Location"
-          value={filters.location}
-          onChange={handleFilterChange}
-          onKeyDown={handleKeyDown}
-        />
-        <div>
-          <label>
+    <div className={moduleCss.catalogSection}>
+      <div className={moduleCss.catalogWrapper}>
+        <section className={moduleCss.catalogLeft}>
+          <p>Location</p>
+          <div className={moduleCss.catalogInputWrapper}>
             <input
-              type="checkbox"
-              name="details"
-              value="kitchen"
-              checked={filters.details.includes('kitchen')}
+              className={moduleCss.catalogInput}
+              type="text"
+              name="location"
+              placeholder="Kyiv, Ukraine"
+              value={filters.location}
               onChange={handleFilterChange}
+              onKeyDown={handleKeyDown}
             />
-            Kitchen
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="details"
-              value="airConditioner"
-              checked={filters.details.includes('airConditioner')}
-              onChange={handleFilterChange}
-            />
-            AC
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="transmission"
-              value="automatic"
-              checked={filters.transmission === 'automatic'}
-              onChange={handleFilterChange}
-            />
-            Automatic Transmission
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="details"
-              value="shower"
-              checked={filters.details.includes('shower')}
-              onChange={handleFilterChange}
-            />
-            Shower
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="details"
-              value="TV"
-              checked={filters.details.includes('TV')}
-              onChange={handleFilterChange}
-            />
-            TV
-          </label>
-        </div>
-        <div>
-          <label>
-            <input
-              type="radio"
-              name="form"
-              value="alcove"
-              checked={filters.form === 'alcove'}
-              onChange={handleFilterChange}
-            />
-            Alcove
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="form"
-              value="van"
-              checked={filters.form === 'van'}
-              onChange={handleFilterChange}
-            />
-            Van
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="form"
-              value="panelTruck"
-              checked={filters.form === 'panelTruck'}
-              onChange={handleFilterChange}
-            />
-            Panel Truck
-          </label>
-        </div>
-        <button onClick={handleSearch}>Search</button>
-      </div>
-      <CamperList campers={campers} />
-      <div>
-        {hasMore && <Button onClick={handleLoadMore}>Load More</Button>}
+          </div>
+
+          <p className={moduleCss.catalogFilterItem}>Filter</p>
+          <Filters filters={filters} handleFilterChange={handleFilterChange} />
+          <button
+            className={`${commonModuleCss.bookingFormButton} ${moduleCss.catalogSearchBtn}`}
+            onClick={handleSearch}
+          >
+            Search
+          </button>
+        </section>
+
+        <section className={moduleCss.catalogRight}>
+          <CamperList campers={campers} />
+          <div>
+            {hasMore && <Button onClick={handleLoadMore}>Load More</Button>}
+          </div>
+        </section>
       </div>
     </div>
   );

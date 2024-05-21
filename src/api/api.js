@@ -7,7 +7,7 @@ const axiosInstance = axios.create({ baseURL });
 export const axiosRequest = async (config, { rejectWithValue }) => {
   try {
     const response = await axiosInstance(config);
- 
+
     return response.data;
   } catch (e) {
     if (e.response && e.response.status === 404) {

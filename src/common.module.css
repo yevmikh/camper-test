@@ -1,0 +1,104 @@
+.formHeader {
+  color: #101828;
+  line-height: 1.25;
+}
+.formPrice {
+  display: flex;
+  gap: 16px;
+  color: #101828;
+}
+.formRating {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.formRatingLoc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+.icon {
+  width: 20px;
+  height: 20px;
+  fill: #101828;
+}
+
+.tabs {
+  display: flex;
+  gap: 40px;
+  position: relative;
+}
+
+.formFeaturesCard {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.formItem {
+  display: inline-flex;
+  padding: 12px 18px;
+  align-items: center;
+  gap: 8px;
+  border-radius: 100px;
+  background: #f2f4f7;
+  color: #101828;
+}
+
+.detailsTitle {
+  color: #101828;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.bookingFormButton {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+
+  border-radius: 200px;
+  background: #c0392b;
+
+  color: #fff;
+
+  font-size: 22px;
+  line-height: 1.5;
+  letter-spacing: -0.08px;
+  transition: scale 0.5s ease;
+
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.bookingFormButton:hover,
+.bookingFormButton:focus {
+  animation: rubberBand 1s;
+  background-color: #e44848;
+}
+
+@keyframes rubberBand {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    transform: scale3d(1.1, 0.75, 1);
+  }
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}

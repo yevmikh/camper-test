@@ -1,8 +1,33 @@
+import { useNavigate } from 'react-router-dom';
+import commonModuleCss from '../../common.module.css';
+import moduleCss from './home.module.css';
+
 const Home = () => {
+  const navigate = useNavigate();
+
+  const handleButtonClick = () => {
+    navigate('/catalog');
+  };
+
   return (
-    <div>
-      <h1>Home Page</h1>
-    </div>
+    <section className={moduleCss.homeWrapper}>
+      <div className={moduleCss.overlay}></div>
+      <div className={moduleCss.homeContent}>
+        <h1 className={moduleCss.homeTitle}>Enjoy Your Trip</h1>
+        <h2 className={moduleCss.homeAnotation}>
+          Our fleet includes a variety of camper models, from compact vans for
+          solo travelers to spacious motorhomes for families. Each vehicle is
+          meticulously maintained and regularly serviced to guarantee your
+          safety and comfort.
+        </h2>
+        <button
+          className={`${commonModuleCss.bookingFormButton} ${moduleCss.tripButton}`}
+          onClick={handleButtonClick}
+        >
+          To Trip
+        </button>
+      </div>
+    </section>
   );
 };
 

@@ -1,0 +1,276 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background: #fff;
+
+  border-radius: 20px;
+
+  max-width: 902px;
+  max-height: 90vh;
+  overflow-y: scroll;
+  position: relative;
+
+  padding: 40px;
+  flex-direction: column;
+
+  gap: 24px;
+  top: 80px;
+}
+
+.modal::-webkit-scrollbar {
+  width: 0px; /* Приховуємо ползунок для браузерів на основі WebKit */
+  background: transparent; /* Робимо фоновий колір прозорим */
+}
+
+.closeButton {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.tabs {
+  display: flex;
+  gap: 40px;
+  position: relative;
+}
+
+.tabs button {
+  background: transparent;
+  font-weight: bold;
+  color: #101828;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.tabs button.activeTab {
+  position: relative;
+  background: none;
+  color: #101828;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.tabs button.activeTab::after {
+  content: '';
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: -24px; /* Відстань від тексту до лінії підкреслення */
+  height: 5px; /* Товщина підкреслення */
+  background-color: #e44848; /* Колір підкреслення відповідає кольору тексту */
+}
+.tabContent {
+  margin-top: 14px;
+  /* font-size: 0.9em; */
+}
+
+/* .tabContent img.modalImg {
+  width: 290px;
+  height: 310px;
+  height: auto;
+  margin-bottom: 24px;
+} */
+
+.bookingForm {
+  width: 50%;
+  border-radius: 10px;
+  border: 1px solid rgba(16, 24, 40, 0.2);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+/* .bookingFormInput {
+  width: 100%;
+} */
+.bookingFormFlex {
+  margin-top: 24px;
+}
+
+.bookingForm label {
+  display: block;
+  margin-bottom: 14px;
+
+  text-align: center;
+}
+
+.bookingForm input,
+.bookingForm textarea {
+  width: 100%;
+  padding: 18px;
+  border-radius: 10px;
+  background: var(--Inputs, #f7f7f7);
+  box-sizing: border-box;
+  border: none;
+  resize: none;
+
+  color: rgba(16, 24, 40, 0.6);
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.error {
+  color: #e44848;
+  font-size: 0.9em;
+}
+
+.descriptionFlex {
+  display: flex;
+  justify-content: space-between;
+  gap: 44px;
+
+  margin-top: 68px;
+  padding-bottom: 24px;
+}
+
+.bookingFormContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalFormDescription {
+  margin-bottom: 44px;
+}
+
+.modalFormHeader {
+  margin-bottom: 10px;
+}
+
+.modalFormPrice {
+  margin-bottom: 16px;
+}
+
+.modalFormFeatures {
+  width: 50%;
+  height: 530px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+  fill: #101828;
+  transition: color 0.3s ease, scale 0.3s ease;
+}
+
+.icon:hover,
+.icon:focus {
+  scale: 1.05;
+}
+
+.modalDetailsTitle {
+  position: relative;
+}
+
+.modalDetailsTitle::after {
+  content: '';
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: -24px;
+  height: 1px;
+  background-color: rgba(16, 24, 40, 0.1);
+}
+.modalDetails {
+  color: #101828;
+  font-size: 18px;
+  line-height: 1.33;
+}
+.modalDetailsItem {
+  display: flex;
+  justify-content: space-between;
+}
+.modalFormBooking {
+  margin-bottom: 8px;
+}
+
+.bookingFormDateWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.bookingFormDate {
+  width: 100%;
+  padding: 10px;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+.bookingFormDateIcon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.bookingFormDateWrapper .react-datepicker-wrapper {
+  width: 100%;
+}
+
+.bookingFormButton {
+  margin-top: 14px;
+  padding: 16px 60px;
+}
+
+.reviewAvatartBox {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.reviewAvatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 60px;
+  background: #f2f4f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconLine {
+  top: 0;
+  position: absolute;
+  stroke-width: 1px;
+  stroke: rgba(16, 24, 40, 0.2);
+  pointer-events: none;
+  width: 100%;
+  height: 2px;
+  top: 48px;
+  right: 0;
+}
+
+.modalImgContainer {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px; /* Відстань між зображеннями */
+}
+
+.modalImg {
+  width: calc((100% - 32px) / 3);
+  height: auto;
+  border-radius: 10px;
+}

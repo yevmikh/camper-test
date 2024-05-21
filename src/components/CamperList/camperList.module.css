@@ -1,0 +1,113 @@
+.camper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.camperCard {
+  display: flex;
+  width: 888px;
+  border-radius: 20px;
+  border: 1px solid rgba(16, 24, 40, 0.2);
+
+  background: #fff;
+  padding: 24px;
+  gap: 24px;
+}
+.camperTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.camperTitleHeartGroup {
+  display: flex;
+  gap: 10px;
+}
+
+.transparentButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.iconDef {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: #101828;
+  transition: stroke 0.3s ease-in-out;
+}
+
+.iconDef:hover,
+.iconDef:focus {
+  stroke: #c0392b;
+
+  scale: 1.1;
+}
+
+.iconDef.red {
+  fill: #c0392b;
+  stroke: #c0392b;
+}
+
+.camperDescription {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 525px;
+  margin-bottom: 24px;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  fill: #101828;
+}
+.camperFormButton {
+  padding: 16px 40px;
+  margin-top: 24px;
+}
+.camperCardRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.modalFormPrice {
+  margin-bottom: 24px;
+}
+.camperImgBox {
+  height: auto;
+  object-fit: cover;
+}
+.camperImg {
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.camperButtonWraper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.noCampersContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.noCampersImage {
+  width: 200px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.noCampersText {
+  font-size: 36px;
+  color: #333;
+}
