@@ -16,6 +16,9 @@ const CamperCard = ({ camper, isFavorite, onToggleFavorite, onShowMore }) => {
     location,
     description,
     details,
+    adults,
+    transmission,
+    engine,
   } = camper;
 
   return (
@@ -30,7 +33,12 @@ const CamperCard = ({ camper, isFavorite, onToggleFavorite, onShowMore }) => {
         />
         <CamperDetails rating={rating} reviews={reviews} location={location} />
         <p className={moduleCss.camperDescription}>{description}</p>
-        <CamperFeatures details={details} />
+        <CamperFeatures
+          adults={adults}
+          transmission={transmission}
+          engine={engine}
+          details={details}
+        />
         <CamperButton onClick={() => onShowMore(camper)} />
       </div>
     </div>

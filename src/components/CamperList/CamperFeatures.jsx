@@ -2,9 +2,8 @@ import moduleCss from './camperList.module.css';
 import commonModuleCss from '../../common.module.css';
 import sprite from '../../image/icons/sprite.svg';
 
-const CamperFeatures = ({ details }) => {
-  const { adults, transmission, engine, kitchen, beds, airConditioner } =
-    details;
+const CamperFeatures = ({ details, adults, transmission, engine }) => {
+  const { kitchen, beds, airConditioner } = details;
 
   return (
     <ul className={commonModuleCss.formFeaturesCard}>
