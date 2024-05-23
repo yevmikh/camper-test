@@ -20,7 +20,7 @@ const Home = () => {
           safety and comfort.
         </h2>
         <button className={moduleCss.tripButton} onClick={handleButtonClick}>
-          To Trip
+          To travel
         </button>
       </div>
     </section>

@@ -44,7 +44,7 @@ const Favorites = () => {
           className={`${commonModuleCss.bookingFormButton} ${moduleCss.tripButton}`}
           onClick={handleButtonClick}
         >
-          To Trip
+          To travel
         </button>
       </div>
     );
