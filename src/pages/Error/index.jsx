@@ -19,7 +19,7 @@ const Error = () => {
           className={`${commonModuleCss.bookingFormButton} ${moduleCss.tripButton}`}
           onClick={handleButtonClick}
         >
-          To Trip
+          To Travel
         </button>
       </div>
     </section>
