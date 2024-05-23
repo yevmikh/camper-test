@@ -1,9 +1,9 @@
 {
   "files": {
-    "main.css": "/camper-test/static/css/main.4eefdb49.css",
-    "main.js": "/camper-test/static/js/main.418044bf.js",
-    "static/css/849.a2cada67.chunk.css": "/camper-test/static/css/849.a2cada67.chunk.css",
-    "static/js/849.2b36ca27.chunk.js": "/camper-test/static/js/849.2b36ca27.chunk.js",
+    "main.css": "/camper-test/static/css/main.d6599991.css",
+    "main.js": "/camper-test/static/js/main.ff2ddf50.js",
+    "static/css/849.bad6720c.chunk.css": "/camper-test/static/css/849.bad6720c.chunk.css",
+    "static/js/849.1a184044.chunk.js": "/camper-test/static/js/849.1a184044.chunk.js",
     "static/css/977.1b37f3f2.chunk.css": "/camper-test/static/css/977.1b37f3f2.chunk.css",
     "static/js/977.1a999b8c.chunk.js": "/camper-test/static/js/977.1a999b8c.chunk.js",
     "static/css/905.0b860744.chunk.css": "/camper-test/static/css/905.0b860744.chunk.css",
@@ -19,10 +19,10 @@
     "static/media/sprite.svg": "/camper-test/static/media/sprite.664cce7637d03f31a3a051159f39457f.svg",
     "static/media/stop.png": "/camper-test/static/media/stop.6f9f3d8790788a8c9056.png",
     "index.html": "/camper-test/index.html",
-    "main.4eefdb49.css.map": "/camper-test/static/css/main.4eefdb49.css.map",
-    "main.418044bf.js.map": "/camper-test/static/js/main.418044bf.js.map",
-    "849.a2cada67.chunk.css.map": "/camper-test/static/css/849.a2cada67.chunk.css.map",
-    "849.2b36ca27.chunk.js.map": "/camper-test/static/js/849.2b36ca27.chunk.js.map",
+    "main.d6599991.css.map": "/camper-test/static/css/main.d6599991.css.map",
+    "main.ff2ddf50.js.map": "/camper-test/static/js/main.ff2ddf50.js.map",
+    "849.bad6720c.chunk.css.map": "/camper-test/static/css/849.bad6720c.chunk.css.map",
+    "849.1a184044.chunk.js.map": "/camper-test/static/js/849.1a184044.chunk.js.map",
     "977.1b37f3f2.chunk.css.map": "/camper-test/static/css/977.1b37f3f2.chunk.css.map",
     "977.1a999b8c.chunk.js.map": "/camper-test/static/js/977.1a999b8c.chunk.js.map",
     "905.0b860744.chunk.css.map": "/camper-test/static/css/905.0b860744.chunk.css.map",
@@ -34,7 +34,7 @@
     "166.ffa68ced.chunk.js.map": "/camper-test/static/js/166.ffa68ced.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4eefdb49.css",
-    "static/js/main.418044bf.js"
+    "static/css/main.d6599991.css",
+    "static/js/main.ff2ddf50.js"
   ]
 }
