@@ -20,10 +20,7 @@ const Home = () => {
           meticulously maintained and regularly serviced to guarantee your
           safety and comfort.
         </h2>
-        <button
-          className={`${commonModuleCss.bookingFormButton} ${moduleCss.tripButton}`}
-          onClick={handleButtonClick}
-        >
+        <button className={moduleCss.tripButton} onClick={handleButtonClick}>
           To Trip
         </button>
       </div>
