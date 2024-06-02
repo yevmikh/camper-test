@@ -16,6 +16,8 @@
 
   max-width: 1440px;
   padding: 20px 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .headerNavList {
@@ -31,4 +33,13 @@
 .headerNavList:focus {
   color: #ffc531;
   scale: 1.1;
+}
+
+@media only screen and (min-width: 768px) {
+  .headerNav {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+@media only screen and (min-width: 1280px) {
 }

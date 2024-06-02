@@ -13,30 +13,27 @@
   position: relative;
   background-color: grey;
   font-family: 'Roboto', sans-serif;
+  padding: 16px;
   padding-top: 120px;
 }
 
 .homeContent {
-  margin-left: 20px;
   color: white;
   position: relative;
   z-index: 1;
-  max-width: 800px;
-}
-
-.homeTitle {
-  font-size: 48px;
-  font-weight: 700;
-  margin-bottom: 40px;
+  padding-top: 40px;
 }
 
 .homeAnotation {
-  font-size: 20px;
-  max-width: 520px;
   color: white;
   position: relative;
   z-index: 1;
-  margin-bottom: 40px;
+  font-size: 16px;
+}
+
+.homeTitle {
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .overlay {
@@ -46,8 +43,8 @@
   width: 100%;
   height: 100%;
   background: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0.45) 53%,
+    to bottom,
+    rgba(0, 0, 0, 0.3) 53%,
     rgba(0, 0, 0, 0) 80%
   );
 }
@@ -60,7 +57,6 @@
   align-items: center;
   background: #c0392b;
   border-radius: 200px;
-  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06); */
   color: #fff;
   display: flex;
 
@@ -68,9 +64,11 @@
   justify-content: center;
   letter-spacing: -0.08px;
   line-height: 1.5;
-  margin-top: 14px;
+  margin-top: 220px;
   transition: scale 0.5s ease;
   transition: background-color 0.3s ease-in-out;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .tripButton:hover,
@@ -100,5 +98,48 @@
   }
   100% {
     transform: scale3d(1, 1, 1);
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .overlay {
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.45) 53%,
+      rgba(0, 0, 0, 0) 80%
+    );
+  }
+  .homeAnotation {
+    font-size: 20px;
+    max-width: 520px;
+    margin-bottom: 40px;
+  }
+
+  .homeTitle {
+    text-align: left;
+  }
+
+  .tripButton {
+    margin-top: 14px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .homeWrapper {
+    padding: initial;
+  }
+
+  .homeContent {
+    margin-left: 20px;
+    max-width: 800px;
+    padding-top: 120px;
+  }
+
+  .homeTitle {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 40px;
   }
 }
